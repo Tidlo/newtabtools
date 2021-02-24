@@ -5,7 +5,7 @@
 /* import-globals-from newTab.js */
 
 var Prefs = {
-	_theme: 'light',
+	_theme: 'dark',
 	_opacity: 80,
 	_rows: 3,
 	_columns: 3,
@@ -56,8 +56,13 @@ var Prefs = {
 		});
 	},
 	parsePrefs(prefs) {
-		if (['light', 'dark'].includes(prefs.theme)) {
-			this._theme = prefs.theme;
+		if (['light', 'dark', 'auto'].includes(prefs.theme)) {
+			if (prefs.theme === 'auto') {
+				this._theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light";
+			}
+			else {
+				this._theme = prefs.theme;
+			}
 		}
 		if (Number.isInteger(prefs.opacity) && prefs.opacity >= 0 && prefs.opacity <= 100) {
 			this._opacity = prefs.opacity;

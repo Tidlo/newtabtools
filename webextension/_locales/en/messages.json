@@ -189,6 +189,9 @@
 	"options_theme_light": {
 		"message": "Light theme"
 	},
+	"options_theme_auto": {
+		"message": "Follow system"
+	},
 	"options_thumb_titlesize": {
 		"message": "Tile title size"
 	},
